@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "mini-netflix": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mini-netflix"
+    }
+  },
+  "defaultProject": "mini-netflix",
+  "cli": {
+    "analytics": "af8c84b4-b74d-45e7-b883-2eddf1eb75ff"
+  }
 }
