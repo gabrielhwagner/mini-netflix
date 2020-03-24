@@ -1,8 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-
-const routes: Routes = [];
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginGuard } from './pages/login/login.guard'; 
+const routes: Routes = [
+  {
+		path: '',
+		component: DashboardComponent,
+		canActivate: [LoginGuard],
+		data: {
+			animation: 'dashboard'
+		}
+	},
+	{
+		path: 'login',
+		component: LoginComponent,
+		canActivate: [LoginGuard],
+		data: {
+			animation: 'login',
+		}
+	},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
