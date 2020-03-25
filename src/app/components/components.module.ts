@@ -22,6 +22,7 @@ import { ListMoviesComponent } from './list-movies/list-movies.component';
     ButtonComponent,
     InputComponent,
     HeaderComponent,
+    ListMoviesComponent,
   ]
 })
 export class ComponentsModule { }
