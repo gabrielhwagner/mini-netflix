@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { MetricsComponent } from './metrics/metrics.component';
 import { PlayMovieComponent } from './play-movie/play-movie.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ComponentsModule } from 'app/components/components.module';
 
 
 
@@ -17,10 +18,11 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule
   ],
   exports: [
-		DashboardComponent
-	],
+    DashboardComponent,
+  ],
 })
 export class DashboardModule { }

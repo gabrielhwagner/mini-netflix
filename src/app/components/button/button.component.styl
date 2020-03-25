@@ -1,0 +1,21 @@
+@import '../../../assets/stylus/colors.styl';
+
+[data-component="button"]
+  width 100%
+  height 40px
+  cursor pointer
+  border-radius 3px
+  background-color $red
+  position relative
+  transition 0.2s ease-in-out
+  display flex
+  justify-content center
+  align-items center
+  &.primary 
+    border none
+    color #fff
+    &:hover
+      background-color $red-dark
+  &.transparent
+    color #000
+    background-color transparent

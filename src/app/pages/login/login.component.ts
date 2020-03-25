@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,55 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  form: FormGroup;
+  submittedForm: boolean;
+  userNotFound: boolean;
+  loading: boolean;
+
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authServive: AuthService,
+  ) {
+    this.form = formBuilder.group({
+      email: [null, [Validators.required]],
+      password: [null, [Validators.required]]
+    });
+    this.submittedForm = false;
+    this.loading = false;
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    window.localStorage.setItem('user', 'teste');
-    this.router.navigateByUrl('/');
+    this.submittedForm = true;
+    if (this.form.valid) {
+      const data = {
+        email: this.form.get('email').value,
+        password: this.form.get('password').value
+      };
+      this.loading = true;
+      this.authServive.login(data).subscribe(
+        (res) => {
+          // TODO tipar
+          this.userNotFound = false;
+          this.loading = false;
+          window.localStorage.setItem('user', JSON.stringify(res));
+          this.router.navigateByUrl('/');
+        },
+        err => {
+          // TODO validar retorno
+          this.loading = false;
+          this.userNotFound = true;
+          console.log('err', err);
+        }
+      );
+    }
+  }
+
+  isValidValueInput(name) {
+    return this.submittedForm && this.form.get(name).errors;
   }
 
 }

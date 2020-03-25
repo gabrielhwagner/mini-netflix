@@ -1,0 +1,14 @@
+<button data-component="button"
+  type="{{type}}"
+  [ngClass]="{
+    'primary' : appearance === ButtonStyle.PRIMARY,
+    'transparent' : appearance === ButtonStyle.TRANSPARENT
+  }"
+>
+  <span *ngIf="!loading">{{description}}</span>
+  <img
+    src="assets/images/loading.svg"
+    alt="carregando"
+    *ngIf="loading"  
+  >
+</button>

@@ -1,5 +1,55 @@
 <div data-component="login">
-  <p>login works!</p>
-  
-  <button (click)="onSubmit()">Login</button>
+  <div class="box">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="content">
+        <img src="assets/images/netflix-logo.png" alt="logo netflix">
+        <!-- TODO ver input -->
+        <div data-component="input">
+          <input  
+            type="text" 
+            autocomplete="off"
+            placeholder="&nbsp;"
+            formControlName="email"
+            [ngClass]="{'error': isValidValueInput('email')}"
+          >
+          <div class="bar"></div>
+          <label>Digite seu e-mail</label>
+          <p
+            class="error-message"
+            *ngIf="isValidValueInput('email')"
+          >
+            O e-mail é obrigatório
+          </p>
+        </div>
+        <div data-component="input">
+          <input  
+            type="password" 
+            autocomplete="off"
+            placeholder="&nbsp;"
+            formControlName="password"
+            [ngClass]="{'error': isValidValueInput('password')}"
+          >
+          <div class="bar"></div>
+          <label>Digite sua senha</label>
+          <p
+            class="error-message"
+            *ngIf="isValidValueInput('password')"
+          >
+            A senha é obrigatória
+          </p>
+        </div>
+        <div
+          class="user-not-found"
+          *ngIf="userNotFound"
+        >
+          Usuário e/ou senha inválidos
+        </div>
+      </div>
+      <app-button
+        type="submit"
+        description="Entrar"
+        [loading]="loading"
+      ></app-button>
+    </form>
+  </div>
 </div>

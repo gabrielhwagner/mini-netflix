@@ -1,4 +1,36 @@
+@import '../../../assets/stylus/colors.styl';
+@import '../../../assets/stylus/media-queries.styl';
+
 [data-component="login"]
-  background-color blue
-  min-height 100vh
   width 100%
+  min-height 100vh
+  background-color $white
+  display flex
+  align-items center
+  justify-content center
+  background-image url('assets/images/home.jpeg')
+  background-repeat no-repeat
+  background-size cover
+  .box
+    background-color $black-opacity
+    width 400px
+    padding 20px
+    border-radius 5px
+    +breakpoint(mobile)
+      width 90%
+    .content
+      display flex
+      flex-direction column
+      margin-bottom 20px
+      img
+        width 166px
+        margin 0 auto 20px
+      .user-not-found
+        background-color $error
+        padding: 15px
+        color $white
+        border-radius 5px
+        margin 15px 0
+        font-size 12px
+
+
