@@ -1,4 +1,8 @@
 <div data-component="dashboard">
   <app-header></app-header>
-  <app-list-movies></app-list-movies>
+  <main>
+    <router-outlet></router-outlet>
+    <!-- <div class="routeContainer" [@routeAnimation]="getAnimation(myOutlet)">
+    </div> -->
+  </main>
 </div>

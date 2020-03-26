@@ -1,1 +1,8 @@
-<p>metrics works!</p>
+<div data-component="metrics">
+  <div class="list" *ngFor="let category of listMovies">
+    <app-list-movies
+      [slides]="category.movies"
+      [title]="category.name"
+    ></app-list-movies>
+  </div>
+</div>

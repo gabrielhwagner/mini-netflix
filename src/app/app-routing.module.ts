@@ -6,7 +6,7 @@ import { LoginGuard } from './pages/login/login.guard';
 const routes: Routes = [
   {
 		path: '',
-		component: DashboardComponent,
+		loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule',
 		canActivate: [LoginGuard],
 		data: {
 			animation: 'dashboard'

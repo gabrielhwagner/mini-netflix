@@ -23,10 +23,13 @@
       padding 0
       list-style-type none
       li
-        color $white
         margin 0 10px
         position relative
-        cursor pointer
+        user-select none
+        a
+          cursor pointer
+          color $white
+          text-decoration none
         &::before
           content ''
           display block
@@ -38,5 +41,6 @@
           bottom -1px
           left 0
         &:hover
+        &.active
           &::before
             width 100%

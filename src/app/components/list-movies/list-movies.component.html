@@ -1,6 +1,28 @@
 <div data-component="list-movies">
-  <h2>Filmes BR</h2>
+  <h2>{{title}}</h2>
   <div class="movies">
-
+    <ngx-slick-carousel 
+      class="carousel"
+      #slickModal="slick-carousel" 
+      [config]="slideConfig" 
+    >
+      <div 
+        class="movie"
+        ngxSlickItem
+        *ngFor="let slide of slides"
+      >
+        <img
+          src="{{ slide.cover }}"
+          alt="{{slide.name}}"
+          width="100%"
+        />
+        <div class="container-information">
+          <div class="informations">
+            <h4>{{slide.name}}</h4>
+            <span>{{slide.rating}}</span>
+          </div> 
+        </div>
+      </div>
+    </ngx-slick-carousel>
   </div>
 </div>

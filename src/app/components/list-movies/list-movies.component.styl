@@ -1,11 +1,61 @@
 @import '../../../assets/stylus/colors.styl';
 
 [data-component="list-movies"]
-  background-color red
   h2
     color $white
     font-weight 700
     font-size 19px
   .movies
-    display flex
-    flex-direction row
+    margin-top 10px
+    .nav-slide
+      width 40px
+      height 100%
+      position absolute
+      background-image url('assets/images/arrow.svg')
+      background-color rgba(0,0,0,.5)
+      background-position 50%
+      background-repeat no-repeat
+      top 0
+      z-index 99
+      cursor pointer
+      &:focus
+      &:hover
+        background-color rgba(0,0,0,.75)
+      &.prev
+        left -40px
+        transform rotate(180deg)
+      &.next
+        right -40px
+      &.slick-disabled
+        display none !important
+    .movie
+      padding 0 10px
+      position relative
+      cursor pointer
+      &:hover
+      &:focus
+        outline none
+        .container-information
+          top 0
+          background-color rgba(0,0,0,.4)
+          .informations
+            top calc(100% - 60px)
+      .container-information
+        width calc(100% - 20px)
+        height 100%
+        position absolute
+        top calc(100% - 36px)
+        background-color transparent
+        background-image url('assets/images/icon-play.png')
+        background-repeat no-repeat
+        background-position center
+        background-size 41%
+        transition top 0.3s ease-in-out, background-color 0.5s ease-in-out 
+        color $white
+        padding-left 10px
+        .informations
+          position absolute
+          transition 0.3s ease-in-out
+          top 10px
+          h4
+            margin-bottom 5px

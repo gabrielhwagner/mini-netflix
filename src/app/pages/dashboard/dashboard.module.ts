@@ -6,8 +6,7 @@ import { MetricsComponent } from './metrics/metrics.component';
 import { PlayMovieComponent } from './play-movie/play-movie.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ComponentsModule } from 'app/components/components.module';
-
-
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,10 +18,8 @@ import { ComponentsModule } from 'app/components/components.module';
   ],
   imports: [
     CommonModule,
+    DashboardRoutingModule,
     ComponentsModule
-  ],
-  exports: [
-    DashboardComponent,
   ],
 })
 export class DashboardModule { }

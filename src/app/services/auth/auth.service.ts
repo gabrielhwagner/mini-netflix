@@ -23,6 +23,6 @@ export class AuthService {
         }
         return observer.error('Usuario e senha inválidos')
       }, 1500);
-    })
+    });
   }
 }
