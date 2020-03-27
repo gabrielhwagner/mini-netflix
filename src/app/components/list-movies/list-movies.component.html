@@ -7,21 +7,12 @@
       [config]="slideConfig" 
     >
       <div 
-        class="movie"
         ngxSlickItem
-        *ngFor="let slide of slides"
+        *ngFor="let movie of slides"
       >
-        <img
-          src="{{ slide.cover }}"
-          alt="{{slide.name}}"
-          width="100%"
-        />
-        <div class="container-information">
-          <div class="informations">
-            <h4>{{slide.name}}</h4>
-            <span>{{slide.rating}}</span>
-          </div> 
-        </div>
+        <app-movie
+          [movie]="movie"
+        ></app-movie>
       </div>
     </ngx-slick-carousel>
   </div>

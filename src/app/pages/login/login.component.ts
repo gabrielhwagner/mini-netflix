@@ -41,17 +41,14 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       this.authServive.login(data).subscribe(
         (res) => {
-          // TODO tipar
           this.userNotFound = false;
           this.loading = false;
           window.localStorage.setItem('user', JSON.stringify(res));
           this.router.navigateByUrl('/');
         },
         err => {
-          // TODO validar retorno
           this.loading = false;
           this.userNotFound = true;
-          console.log('err', err);
         }
       );
     }

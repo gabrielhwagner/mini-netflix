@@ -21,7 +21,8 @@ export class MoviesService {
 
   searchMoviesTopWatched(): Observable<IMovie[]> {
     return new Observable((observer) => {
-      const movies = getMovies();
+      const listMovies = getMovies();
+      const movies = this.searchWatchedMovies(listMovies);
       const sort = this.sortMovieByWatched(movies, 8);
       return observer.next(sort);
     });
@@ -32,7 +33,8 @@ export class MoviesService {
       const categories = this.mergeCategoryAndMovie();
 
       const sort = categories.map(category => {
-        const movies = this.sortMovieByWatched(category.movies, 6);
+        const moviesWatched = this.searchWatchedMovies(category.movies);
+        const movies = this.sortMovieByWatched(moviesWatched, 6);
 
         return {
           id: null,
@@ -42,6 +44,75 @@ export class MoviesService {
       });
 
       return observer.next(sort);
+    });
+  }
+
+  searchMoviesTopWatchedByUser(): Observable<IMovie[]> {
+    return new Observable((observer) => {
+      const { id: idUser } = JSON.parse(window.localStorage.getItem('user'));
+      const usersData = JSON.parse(window.localStorage.getItem('usersData'));
+
+      if (!usersData) {
+        return observer.next([]);
+      }
+
+      const userData = usersData.find(user => user.idUser === idUser);
+
+      if (!userData || userData.movies.length === 0) {
+        return observer.next([]);
+      }
+
+      const sort = this.sortMovieByWatched(userData.movies, 5);
+      const data = sort.map(movie => {
+        const detail = this.searchDetailMovie(movie.id);
+
+        return {
+          ...detail,
+          watchedNumber: movie.watchedNumber
+        };
+      });
+      return observer.next(data);
+    });
+  }
+
+  addMovieWatch(idMovie: number): Observable<{}> {
+    return new Observable((observer) => {
+      const { id: idUser } = JSON.parse(window.localStorage.getItem('user'));
+      let usersData = JSON.parse(window.localStorage.getItem('usersData'));
+
+      if (!usersData) {
+        usersData = [{
+          idUser,
+          movies: [],
+        }];
+      }
+
+      const indexUser = usersData.findIndex(user => user.idUser === idUser);
+
+      if (indexUser === -1) {
+        usersData.push({
+          idUser,
+          movies: [{
+            id: idMovie,
+            watchedNumber: 1,
+          }],
+        });
+        window.localStorage.setItem('usersData', JSON.stringify(usersData));
+        return observer.next({});
+      }
+
+      const movieIndex = usersData[indexUser].movies
+        .findIndex(movie => movie.id === idMovie);
+
+      if (movieIndex === -1) {
+        usersData[indexUser].movies.push({ id: idMovie, watchedNumber: 1 });
+      } else {
+        usersData[indexUser].movies[movieIndex].watchedNumber++;
+      }
+
+      window.localStorage.setItem('usersData', JSON.stringify(usersData));
+
+      return observer.next({});
     });
   }
 
@@ -66,5 +137,36 @@ export class MoviesService {
     movies.sort((a, b) => b.watchedNumber - a.watchedNumber);
     const list = movies.splice(0, numberMovies);
     return list;
+  }
+
+  searchDetailMovie(id: number): IMovie {
+    const movies = getMovies();
+    return movies.find(movie => movie.id === id);
+  }
+
+  searchWatchedMovies(listMovies: IMovie[]): IMovie[] {
+    const movies = listMovies.map(movie => {
+      const { watchedNumber, id } = movie;
+      const watchedNumberUser = this.searchWatchedMovieByUsers(id);
+      return {
+        ...movie,
+        watchedNumber: watchedNumber + watchedNumberUser
+      };
+    });
+    return movies;
+  }
+
+  searchWatchedMovieByUsers(idMovie: number): number {
+    const usersData = JSON.parse(window.localStorage.getItem('usersData'));
+    if (!usersData) { return 0; }
+
+    let numberWatcher = 0;
+
+    usersData.forEach(user => {
+      const movie = user.movies.find(({ id }) => id === idMovie);
+      if (movie) { return numberWatcher += movie.watchedNumber; }
+    });
+
+    return numberWatcher;
   }
 }

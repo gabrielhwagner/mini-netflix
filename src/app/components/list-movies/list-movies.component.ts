@@ -25,9 +25,42 @@ export class ListMoviesComponent implements OnInit {
       prevArrow: '<div tabindex="0" class="nav-slide prev"></div>',
       dots: false,
       infinite: false,
+      responsive: [
+        {
+          breakpoint: 1500,
+          settings: {
+            slidesToShow: 4,
+          }
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 4,
+          }
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 3,
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+          }
+        },
+      ]
     };
   }
 
   ngOnInit(): void {
   }
+
 }

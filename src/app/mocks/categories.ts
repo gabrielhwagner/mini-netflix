@@ -9,7 +9,7 @@ const getCategories = () => ([
   },
   {
     id: 3,
-    name: 'Comédia',
+    name: 'Aventura',
   },
 ]);
 

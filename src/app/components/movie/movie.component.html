@@ -1,0 +1,15 @@
+<div data-component="movie" (click)="onClickMovie()">
+  <img
+    src="{{movie.cape}}"
+    alt="{{movie.name}}"
+    width="100%"
+  />
+  <div class="container-information">
+    <div class="informations">
+      <h4>{{movie.name}}</h4>
+      <app-parental-rating
+        rating="{{movie.rating}}"
+      ></app-parental-rating>
+    </div> 
+  </div>
+</div>

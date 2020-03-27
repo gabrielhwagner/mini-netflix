@@ -1,3 +1,29 @@
 <div data-component="profile">
-  DUDSGSDJDB
+  <h2>Meu perfil</h2>
+  <div class="user-data">
+    <app-user-data
+      [user]="user"
+    ></app-user-data>
+  </div>
+  <div class="movies-watched">
+    <h3>Filmes que você mais viu</h3>
+    <div class="movies">
+      <div
+        class="not-see"
+        *ngIf="movies.length === 0"
+      >
+        <span>Você ainda não olhou nenhum filme :(</span>
+        <img src="assets/images/sad-face.gif" alt="rosto triste">
+      </div>
+      <div
+        class="movie"
+        *ngFor="let movie of movies; index as i"
+      >
+        <span>{{i+1}}</span>
+        <app-movie
+          [movie]="movie"
+        ></app-movie>
+      </div>
+    </div>
+  </div>
 </div>

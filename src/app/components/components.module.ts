@@ -7,6 +7,8 @@ import { InputComponent } from './input/input.component';
 import { HeaderComponent } from './header/header.component';
 import { ListMoviesComponent } from './list-movies/list-movies.component';
 import { RouterModule } from '@angular/router';
+import { MovieComponent } from './movie/movie.component';
+import { ParentalRatingComponent } from './parental-rating/parental-rating.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { RouterModule } from '@angular/router';
     InputComponent,
     HeaderComponent,
     ListMoviesComponent,
+    MovieComponent,
+    ParentalRatingComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +31,8 @@ import { RouterModule } from '@angular/router';
     InputComponent,
     HeaderComponent,
     ListMoviesComponent,
+    MovieComponent,
+    ParentalRatingComponent
   ]
 })
 export class ComponentsModule { }

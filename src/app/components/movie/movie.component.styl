@@ -1,0 +1,50 @@
+@import '../../../assets/stylus/colors.styl';
+@import '../../../assets/stylus/media-queries.styl';
+
+[data-component="movie"]
+  padding 0 10px
+  position relative
+  cursor pointer
+  overflow hidden
+  height 175px
+  +breakpoint(middle)
+    height 140px
+  +breakpoint(large-mobile)
+    height 270px
+  +breakpoint(middle-mobile)
+    height 239px
+  +breakpoint(mobile)
+    height 200px
+  &:hover
+  &:focus
+    outline none
+    .container-information
+      top 0
+      background-color rgba(0,0,0,.5)
+      .informations
+        top calc(100% - 60px)
+  img
+    height 100%
+    width 100%
+  .container-information
+    width calc(100% - 20px)
+    height 100%
+    position absolute
+    top calc(100% - 33px)
+    background-color transparent
+    background-image url('assets/images/icon-play.png')
+    background-repeat no-repeat
+    background-position center
+    background-size 41%
+    transition top 0.3s ease-in-out, background-color 0.5s ease-in-out 
+    color $white
+    padding-left 10px
+    .informations
+      position absolute
+      transition 0.3s ease-in-out
+      top 10px
+      h4
+        margin-bottom 5px
+        text-transform uppercase
+        text-shadow 2px 2px $black
+

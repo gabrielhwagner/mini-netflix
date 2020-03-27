@@ -1,0 +1,13 @@
+<div
+  data-component="parental-rating"
+  [ngClass]="{
+    'green' : rating === ParentalRating.LIVRE,
+    'blue' : rating === ParentalRating.DEZ,
+    'yellow' : rating === ParentalRating.DOZE,
+    'orange' : rating === ParentalRating.QUATORZE,
+    'red' : rating === ParentalRating.DEZESSEIS,
+    'black' : rating === ParentalRating.DEZOITO
+  }"
+>
+  {{ rating === ParentalRating.LIVRE ? 'L' : rating}}
+</div>
