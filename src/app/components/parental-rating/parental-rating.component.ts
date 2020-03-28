@@ -10,7 +10,7 @@ export class ParentalRatingComponent implements OnInit {
 
   @Input() rating: ParentalRating;
   ParentalRating = ParentalRating;
-  
+
   constructor() { }
 
   ngOnInit(): void {

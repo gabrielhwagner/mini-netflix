@@ -1,6 +1,51 @@
 @import '../../../../assets/stylus/colors.styl';
 @import '../../../../assets/stylus/media-queries.styl';
 
-[data-component="profile"]
+[data-component="play-movie"]
   width 100%
+  height calc(100% - 76px)
+  display flex
+  flex-direction row
+  position absolute
+  left 0
+  +breakpoint(middle)
+    flex-direction column
+  .video
+    flex 1
+    background-color $gray-dark
+    position relative
+    div 
+      position absolute
+      width 100%
+      height 100%
+      z-index 9
+    img
+      width 50px
+      position absolute
+      top 0
+      bottom 0
+      right 0
+      left 0
+      margin auto
+      z-index 0
+  .informations
+    padding 0 20px
+    width 350px
+    color $white
+    h3
+      font-size 30px
+      text-shadow 3px 3px $black
+      margin-bottom 20px
+    p
+      font-weight 600
+      text-align justify
+      line-height 21px
+      font-size 18px
+    .rating
+      margin-top 20px
+      display flex;
+      align-items center
+      p
+        margin-right 10px
+
 

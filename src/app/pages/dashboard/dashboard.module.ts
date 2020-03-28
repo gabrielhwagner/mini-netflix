@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { MetricsComponent } from './metrics/metrics.component';
@@ -21,7 +22,8 @@ import { UserDataComponent } from './profile/user-data/user-data.component';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    YouTubePlayerModule
   ],
 })
 export class DashboardModule { }
