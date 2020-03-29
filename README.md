@@ -1,5 +1,5 @@
 <p align="center">
-  <h3 align="center">Teste MiniNetflix</h3>
+  <h3 align="center">Test MiniNetflix</h3>
 </p>
 
 ## About the project
