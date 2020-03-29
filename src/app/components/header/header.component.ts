@@ -8,12 +8,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  openDropdown = false;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onRemove() {
+  logout() {
     window.localStorage.removeItem('user');
     this.router.navigate(['login']);
   }

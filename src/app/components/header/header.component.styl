@@ -9,7 +9,7 @@
   height 72px
   background $black-gradient
   padding 0 40px
-  .teste
+  .options
     display flex
     flex-direction row
     align-items center
@@ -26,21 +26,56 @@
         margin 0 10px
         position relative
         user-select none
-        a
-          cursor pointer
-          color $white
-          text-decoration none
-        &::before
-          content ''
-          display block
-          width 0
-          height 1px
-          transition 0.3s ease-in-out
-          background-color $red
-          position absolute
-          bottom -1px
-          left 0
-        &:hover
-        &.active
-          &::before
-            width 100%
+  .account-dropdown
+    position relative
+    z-index 999
+    cursor pointer
+    &:hover
+      .dropdown
+        display block
+    img
+      width 32px
+      height 32px
+    .dropdown
+      display none
+      width 150px
+      right 0
+      top 100%
+      position absolute
+      background-color rgba(0,0,0,.9)
+      color $white
+      border 1px solid $gray-background
+      box-shadow 4px 5px 7px 0px rgba(0,0,0,0.75)
+      text-align center
+      &:hover
+        display block
+      ul
+        list-style-type none
+        li
+          width 100%
+          padding 10px 0
+          position relative
+          font-size 13px
+          letter-spacing 1px
+          outline none
+  li
+    a
+      cursor pointer
+      color $white
+      text-decoration none
+    &::before
+      content ''
+      display block
+      width 0
+      height 1px
+      transition 0.3s ease-in-out
+      background-color $red
+      position absolute
+      bottom -1px
+      left 0
+    &:hover
+    &.active
+      font-weight bold
+      &::before
+        width 100%
+

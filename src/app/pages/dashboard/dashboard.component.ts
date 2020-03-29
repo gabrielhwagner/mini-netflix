@@ -12,9 +12,4 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onRemove() {
-    window.localStorage.removeItem('user');
-    this.router.navigate(['login']);
-  }
 }

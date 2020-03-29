@@ -11,6 +11,9 @@ export class MoviesService {
 
   constructor() { }
 
+  /*
+    Returns an array of categories with the movies
+  */
   searchMoviesByCategory(): Observable<IMoviesByCategory[]> {
     return new Observable((observer) => {
       const data = this.mergeCategoryAndMovie();
@@ -19,6 +22,10 @@ export class MoviesService {
     });
   }
 
+  /*
+   Returns an array of movies based on the number of views 
+   defined in the mock plus the views of application users
+  */
   searchMoviesTopWatched(): Observable<IMovie[]> {
     return new Observable((observer) => {
       const listMovies = getMovies();
@@ -28,6 +35,11 @@ export class MoviesService {
     });
   }
 
+  /*
+    Returns an array of categories with your movies with the largest
+    number of views defined in the mock plus the views of the users
+    of the application
+  */
   searchMoviesTopWatchedByCategory(): Observable<IMoviesByCategory[]> {
     return new Observable((observer) => {
       const categories = this.mergeCategoryAndMovie();
@@ -47,6 +59,10 @@ export class MoviesService {
     });
   }
 
+  /*
+    Returns an array of movies most viewed by the user,
+    the information is stored in localstorage
+  */
   searchMoviesTopWatchedByUser(): Observable<IMovie[]> {
     return new Observable((observer) => {
       const { id: idUser } = JSON.parse(window.localStorage.getItem('user'));
@@ -75,30 +91,25 @@ export class MoviesService {
     });
   }
 
+  /*
+    Add +1 preview there is a movie on the user object saved on localstorage
+  */
   addMovieWatch(idMovie: number): Observable<{}> {
     return new Observable((observer) => {
       const { id: idUser } = JSON.parse(window.localStorage.getItem('user'));
       let usersData = JSON.parse(window.localStorage.getItem('usersData'));
 
-      if (!usersData) {
-        usersData = [{
-          idUser,
-          movies: [],
-        }];
-      }
+      if (!usersData) usersData = []
 
-      const indexUser = usersData.findIndex(user => user.idUser === idUser);
+      let indexUser = usersData.findIndex(user => user.idUser === idUser);
 
       if (indexUser === -1) {
         usersData.push({
           idUser,
-          movies: [{
-            id: idMovie,
-            watchedNumber: 1,
-          }],
+          movies: [],
         });
-        window.localStorage.setItem('usersData', JSON.stringify(usersData));
-        return observer.next({});
+
+        indexUser = usersData.length - 1;
       }
 
       const movieIndex = usersData[indexUser].movies
@@ -116,6 +127,9 @@ export class MoviesService {
     });
   }
 
+  /*
+    Search the categories and your movies
+  */
   mergeCategoryAndMovie(): Array<IMoviesByCategory> {
     const categories = getCategories();
     const movies = getMovies();
@@ -133,17 +147,27 @@ export class MoviesService {
     return data;
   }
 
+  /*
+    Receive a list of films and sort by the number of views
+  */
   sortMovieByWatched(movies: Array<IMovie>, numberMovies: number): Array<IMovie> {
     movies.sort((a, b) => b.watchedNumber - a.watchedNumber);
     const list = movies.splice(0, numberMovies);
     return list;
   }
 
+  /*
+    Return for the information of a movie
+  */
   searchDetailMovie(id: number): IMovie {
     const movies = getMovies();
     return movies.find(movie => movie.id === id);
   }
 
+  /*
+    Calculate the number of views of a movie, adding the number of
+    views of the mock and users
+  */
   searchWatchedMovies(listMovies: IMovie[]): IMovie[] {
     const movies = listMovies.map(movie => {
       const { watchedNumber, id } = movie;
@@ -156,6 +180,9 @@ export class MoviesService {
     return movies;
   }
 
+  /*
+    Search the number of times users viewed a movie
+  */
   searchWatchedMovieByUsers(idMovie: number): number {
     const usersData = JSON.parse(window.localStorage.getItem('usersData'));
     if (!usersData) { return 0; }

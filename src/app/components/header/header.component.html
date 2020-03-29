@@ -1,5 +1,5 @@
 <header data-component="header">
-  <div class="teste">
+  <div class="options">
     <img 
       src="assets/images/netflix-logo.png"
       alt="logo netflix"
@@ -16,14 +16,19 @@
           Mais assistidos
         </a>
       </li>
-      <li routerLinkActive="active">
-        <a routerLink="/profile">
-          Meu perfil
-        </a>
-      </li>
     </ul>
   </div>
-  <div style="color: #fff" (click)="onRemove()">
-    Sair
+  <div class="account-dropdown">
+    <img src="assets/images/profile-1.jpg" alt="">
+    <div class="dropdown">
+      <ul>
+        <li routerLink="/profile" routerLinkActive="active">
+          Meu perfil
+        </li>
+        <li (click)="logout()">
+          Sair
+        </li>
+      </ul>
+    </div>
   </div>
 </header>

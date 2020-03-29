@@ -13,8 +13,6 @@ export class ListMoviesComponent implements OnInit {
   @Input() slides: Array<IMovie>;
 
   slideConfig: object;
-  // TODO breakpoint
-  slideBreakpoints: object;
 
   constructor() {
 
