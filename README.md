@@ -30,6 +30,19 @@ mininetflix
 
 The logic for calculating the views of the films is based on the sum of the base amount of views defined in the mock object plus the views of the users, which are saved in `localstorage`. This saved object contains a list with the users `ids` and the list of movies he has seen, containing the `id` and the `number of times` he has watched the movie
 
+Example of object saved when user(`id: 1`) watched the movie(`id: 1`) 2 times
+
+```bash
+{
+  idUser: 1,
+  movies: [
+    {
+      id: 1,
+      watchedNumber: 2
+    }
+  ]
+}
+```
 
 ### Installation
 
