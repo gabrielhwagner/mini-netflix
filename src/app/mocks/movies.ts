@@ -332,7 +332,7 @@ const adventureMovies = [
   },
   {
     id: 21,
-    name: 'Vingadores: Guerra Infinita',
+    name: 'Vingadores: GR',
     rating: 'LIVRE',
     cape: 'assets/images/movies/adventure/unnamed.jpg',
     synopsis: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.

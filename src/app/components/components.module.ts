@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ButtonComponent } from './button/button.component';
-import { InputComponent } from './input/input.component';
 import { HeaderComponent } from './header/header.component';
 import { ListMoviesComponent } from './list-movies/list-movies.component';
 import { RouterModule } from '@angular/router';
@@ -13,7 +12,6 @@ import { ParentalRatingComponent } from './parental-rating/parental-rating.compo
 @NgModule({
   declarations: [
     ButtonComponent,
-    InputComponent,
     HeaderComponent,
     ListMoviesComponent,
     MovieComponent,
@@ -28,7 +26,6 @@ import { ParentalRatingComponent } from './parental-rating/parental-rating.compo
   ],
   exports: [
     ButtonComponent,
-    InputComponent,
     HeaderComponent,
     ListMoviesComponent,
     MovieComponent,
