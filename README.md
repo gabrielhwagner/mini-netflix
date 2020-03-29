@@ -52,6 +52,11 @@ Example of object saved when user(`id: 1`) watched the movie(`id: 1`) 2 times
 $ sudo apt install nodejs
 ```
 
+- If you don't have @angular-cli
+```bash
+$ npm install -g @angular/cli
+```
+
 - Install `Package.json` content:
 
 ```bash
