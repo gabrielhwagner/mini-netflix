@@ -4,11 +4,11 @@
 
 ## About the project
 
-This project aims to create an expired application on Netflix. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+This project aims to create an inspired by application on Netflix. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
 ### File Structure
 
-The mass structure is as follows:
+The structure is as follows:
 
 ```bash
 mininetflix
